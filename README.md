@@ -72,12 +72,17 @@ Finally, toggle the visibility using the 'Visible' checkbox. If it is unchecked,
   bundle install
   ```
 
-3. Copy & run migrations
+3. Install Spree Globalize(if you didn't have it before installing spree_static_content)
+  ```ruby
+  bundle exec rails g spree_globalize:install
+  ```
+
+4. Copy & run migrations
   ```ruby
   bundle exec rails g spree_static_content:install
   ```
 
-4. Restart your server
+5. Restart your server
 
   If your server was running, restart it so that it can find the assets properly.
 
