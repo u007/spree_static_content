@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'poltergeist'
+  s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'sass-rails'
