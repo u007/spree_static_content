@@ -4,7 +4,7 @@
 
 <%= form_for [:admin, resource] do |f| %>
   <div class="row" data-hook="admin_page_form_fields">
-    <div class="col-md-6" data-hook="admin_page_form_left">
+    <div class="col-lg-6" data-hook="admin_page_form_left">
       <div class="form-group">
         <%= f.label :title %> <span class="required">*</span>
         <%= f.text_field :title, class: 'form-control' %>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="col-md-6" data-hook="admin_page_form_right">
+    <div class="col-lg-6" data-hook="admin_page_form_right">
       <div class="form-group">
         <%= f.label :layout %>
         <%= f.text_field :layout, class: 'form-control' %>
@@ -40,47 +40,47 @@
         <%= f.number_field :position, min: 0, class: 'form-control' %>
       </div>
 
-      <div class="checkbox">
-        <%= f.label :show_in_sidebar do %>
-          <%= f.check_box :show_in_sidebar %>
+      <div class="checkbox form-check">
+        <%= f.label :show_in_sidebar, { class: 'form-check-label' } do %>
+          <%= f.check_box :show_in_sidebar, { class: 'form-check-input' } %>
           <%= Spree::Page.human_attribute_name(:show_in_sidebar) %>
         <% end %>
       </div>
 
-      <div class="checkbox">
-        <%= f.label :show_in_header do %>
-          <%= f.check_box :show_in_header %>
+      <div class="checkbox form-check">
+        <%= f.label :show_in_header, { class: 'form-check-label' } do %>
+          <%= f.check_box :show_in_header, { class: 'form-check-input' } %>
           <%= Spree::Page.human_attribute_name(:show_in_header) %>
         <% end %>
       </div>
 
-      <div class="checkbox">
-        <%= f.label :show_in_footer do %>
-          <%= f.check_box :show_in_footer %>
+      <div class="checkbox form-check">
+        <%= f.label :show_in_footer, { class: 'form-check-label' } do %>
+          <%= f.check_box :show_in_footer, { class: 'form-check-input' } %>
           <%= Spree::Page.human_attribute_name(:show_in_footer) %>
         <% end %>
       </div>
 
-      <div class="checkbox">
-        <%= f.label :visible do %>
-          <%= f.check_box :visible %>
+      <div class="checkbox form-check">
+        <%= f.label :visible, { class: 'form-check-label' } do %>
+          <%= f.check_box :visible, { class: 'form-check-input' }%>
           <%= Spree::Page.human_attribute_name(:visible) %>
         <% end %>
       </div>
 
-      <div class="checkbox">
-        <%= f.label :render_layout_as_partial do %>
-          <%= f.check_box :render_layout_as_partial %>
+      <div class="checkbox form-check">
+        <%= f.label :render_layout_as_partial, { class: 'form-check-label' } do %>
+          <%= f.check_box :render_layout_as_partial, { class: 'form-check-input' } %>
           <%= Spree::Page.human_attribute_name(:render_layout_as_partial) %>
         <% end %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group mt-3">
         <%= f.label :stores, plural_resource_name(Spree::Store) %>
         <% Spree::Store.all.each do |store| %>
-          <div class="checkbox">
-            <%= f.label store.name.downcase.to_sym do %>
-              <%= check_box_tag 'page[store_ids][]', store.id, @page.stores.include?(store) %>
+          <div class="checkbox form-check">
+            <%= f.label store.name.downcase.to_sym, { class: 'form-check-label' } do %>
+              <%= check_box_tag 'page[store_ids][]', store.id, @page.stores.include?(store), { class: 'form-check-input' } %>
               <%= store.name %>
             <% end %>
           </div>
@@ -90,7 +90,7 @@
   </div>
 
   <div class="row" data-hook="admin_page_form_meta">
-    <div class="col-md-12">
+    <div class="col-lg-12">
       <div class="form-group">
         <%= f.label :meta_title %>
         <%= f.text_field :meta_title, class: 'form-control' %>
@@ -112,7 +112,7 @@
   </div>
 
   <div class="row" data-hook="admin_page_form_additional_fields">
-    <div class="col-md-12"></div>
+    <div class="col-lg-12"></div>
   </div>
 
   <%= render "spree/admin/shared/#{resource.new_record? ? 'new' : 'edit'}_resource_links" %>
