@@ -18,7 +18,15 @@ module Spree
   class StaticPage
     def self.matches?(request)
       return false if request.path =~ %r{\A\/+(admin|account|cart|checkout|content|login|pg\/|orders|products|s\/|session|signup|shipments|states|t\/|tax_categories|user)+}
-      !Spree::Page.joins(:translations).visible.find_by(slug: request.path).nil?
+      !self.finder_scope.find_by(slug: request.path).nil?
+    end
+
+    protected
+    
+    def self.finder_scope
+      scope = Spree::Page.visible
+      scope = scope.joins(:translations) if defined?(SpreeGlobalize)
+      scope
     end
   end
 end

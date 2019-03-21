@@ -1,12 +1,10 @@
 module Spree
   class StaticContentController < StoreController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-
     helper 'spree/products'
     layout :determine_layout
 
     def show
-      @page = Spree::Page.joins(:translations).by_store(current_store).visible.find_by!(slug: request.path)
+      @page = Spree::StaticPage.finder_scope.by_store(current_store).find_by!(slug: request.path)
     end
 
     private

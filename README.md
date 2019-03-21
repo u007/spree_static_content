@@ -46,15 +46,11 @@ Finally, toggle the visibility using the 'Visible' checkbox. If it is unchecked,
 
 ## Installation
 
-1. Add these extensions(unfortunately we need them all because of broken dependency on globalize) to your Gemfile with this line:
+1. Add this extension to your Gemfile with this line:
 
   #### Spree >= 3.1
 
   ```ruby
-
-  gem 'globalize', github: 'globalize/globalize'
-  gem 'spree_i18n', github: 'spree-contrib/spree_i18n'
-  gem 'spree_globalize', github: 'spree-contrib/spree_globalize', branch: 'master'
   gem 'spree_static_content', github: 'spree-contrib/spree_static_content'
   ```
 

@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '>= 3.1.0', '< 4.0'
+  s.add_dependency 'spree_core', '>= 3.1.0', '< 5.0'
   s.add_dependency 'spree_extension'
 
   s.add_development_dependency 'capybara'
@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'pg', '~> 0.18'
   s.add_development_dependency 'mysql2'
-  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'sqlite3', '~> 1.3.6'
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'puma'
 end
