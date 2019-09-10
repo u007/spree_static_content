@@ -8,8 +8,8 @@ module SpreeStaticContent
   end
 
   module VERSION
-    MAJOR = 3
-    MINOR = 4
+    MAJOR = 4
+    MINOR = 0
     TINY  = 0
 
     STRING = [MAJOR, MINOR, TINY].compact.join('.')
