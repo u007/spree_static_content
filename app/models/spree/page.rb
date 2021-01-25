@@ -1,5 +1,5 @@
 class Spree::Page < ActiveRecord::Base
-  default_scope { order(position: :asc) }
+  # default_scope { order(position: :asc) }
 
   has_and_belongs_to_many :stores, join_table: 'spree_pages_stores'
 
@@ -17,13 +17,6 @@ class Spree::Page < ActiveRecord::Base
   scope :by_store, ->(store) { joins(:stores).where('spree_pages_stores.store_id = ?', store) }
 
   before_save :update_positions_and_slug
-
-  if defined?(SpreeGlobalize)
-    translates :title, :body, :slug, :layout, :foreign_link, :meta_keywords, :meta_title, :meta_description,
-               fallbacks_for_empty_translations: true
-
-    include SpreeGlobalize::Translatable
-  end
 
   def initialize(*args)
     super(*args)
