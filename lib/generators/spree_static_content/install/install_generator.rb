@@ -1,20 +1,15 @@
 module SpreeStaticContent
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      class_option :auto_run_migrations, type: :boolean, default: false
-
-      def add_stylesheets
-        inject_into_file 'vendor/assets/stylesheets/spree/frontend/all.css', " *= require spree/frontend/spree_static_content\n", before: /\*\//, verbose: true
-      end
+      class_option :migrate, type: :boolean, default: true, banner: 'Migrate the database'
 
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=spree_static_content'
       end
 
       def run_migrations
-        run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask 'Would you like to run the migrations now? [Y/n]')
-        if run_migrations
-          run 'bundle exec rake db:migrate'
+        if options[:migrate]
+          run 'bundle exec rake db:migrate VERBOSE=false'
         else
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end

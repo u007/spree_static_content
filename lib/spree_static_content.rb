@@ -15,16 +15,13 @@ end
 module Spree
   class StaticPage
     def self.matches?(request)
-      return false if request.path =~ %r{\A\/+(admin|account|cart|checkout|content|login|pg\/|orders|products|s\/|session|signup|shipments|states|t\/|tax_categories|user|rails\/active_storage)+}
-      !self.finder_scope.find_by(slug: request.path).nil?
+      return false if request.path =~ %r{\A\/+(api/v|api_tokens|admin|account|cart|checkout|content|login|pg\/|orders|products|s\/|session|signup|shipments|states|t\/|tax_categories|user|rails\/active_storage)+}
+
+      finder_scope.exists?(slug: request.path)
     end
 
-    protected
-    
     def self.finder_scope
-      scope = Spree::Page.visible
-      scope = scope.joins(:translations) if defined?(SpreeGlobalize)
-      scope
+      Spree::Page.visible
     end
   end
 end
