@@ -50,7 +50,12 @@ RSpec.feature 'Static Content Page', :js do
 
     scenario 'can visit paths to change the language' do
       skip if Spree.version.to_f < 4.2
-      locale = I18n.available_locales.sample
+
+      locale = (if Spree.respond_to?(:available_locales)
+                  Spree.available_locales
+                else
+                  I18n.available_locales
+                end).sample
       visit "/#{locale}"
 
       expect(page).to have_text 'WOMEN'.upcase
