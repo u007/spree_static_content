@@ -2,6 +2,7 @@ require 'spree_core'
 require 'spree_static_content/engine'
 require 'spree_static_content/version'
 require 'spree_extension'
+require 'deface'
 
 module StaticPage
   module_function
