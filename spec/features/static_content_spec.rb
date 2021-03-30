@@ -60,5 +60,27 @@ RSpec.feature 'Static Content Page', :js do
 
       expect(page).to have_text 'WOMEN'.upcase
     end
+
+    scenario 'has valid title' do
+      create(:page, title: 'Title', meta_title: 'Meta Title', stores: [store])
+      visit '/page'
+      expect(page).to have(:title, 'Title')
+    end
+
+    context 'when meta title is present' do
+      scenario 'has valid meta title' do
+        create(:page, title: 'Title', meta_title: 'Meta Title', stores: [store])
+        visit '/page'
+        expect(page).to have_meta(:title, 'Meta Title')
+      end
+    end
+
+    context 'when meta title is not present' do
+      scenario 'has meta title like title' do
+        create(:page, title: 'Title', meta_title: nil, stores: [store])
+        visit '/page'
+        expect(page).to have_meta(:title, 'Title')
+      end
+    end
   end
 end
