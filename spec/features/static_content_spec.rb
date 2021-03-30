@@ -71,7 +71,7 @@ RSpec.feature 'Static Content Page', :js do
       scenario 'has valid meta title' do
         create(:page, slug: '/page', title: 'Title', meta_title: 'Meta Title', stores: [store])
         visit '/page'
-        expect(page).to have_meta(:title, 'Meta Title')
+        expect(page.has_css?("meta[name='title'][content='Meta Title']", visible: false)).to eq true
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.feature 'Static Content Page', :js do
       scenario 'has meta title like title' do
         create(:page, slug: '/page', title: 'Title', meta_title: nil, stores: [store])
         visit '/page'
-        expect(page).to have_meta(:title, 'Title')
+        expect(page.has_css?("meta[name='title'][content='Title']", visible: false)).to eq true
       end
     end
   end
