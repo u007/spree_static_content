@@ -1,3 +1,8 @@
+# ⚠️ Deprecation notice ⚠️
+
+Since Spree 4.3 this extension is deprecated and not needed. Spree 4.3 includes a built-in CMS system that surpasses this extension.
+
+
 # Spree Static Content
 
 [![Build Status](https://travis-ci.org/spree-contrib/spree_static_content.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_static_content)
